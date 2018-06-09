@@ -15,33 +15,38 @@ def bouncing_image(direction,screen,location):
     elif direction==RIGHT:
         direction='right'
 
-    character=pygame.image.load(os.path.join('assets',direction+'-deflated.png'))
-    character_surface=pygame.Surface((137,203))
-    pygame.transform.scale(character,(137,203),character_surface)
+    character=pygame.image.load(os.path.join('assets'+os.sep+'images',direction+'-2.png')).convert()
+    character.set_colorkey((34,177,76))
+    character_surface=pygame.Surface((150,150))
     screen.blit(character,location)
     pygame.display.flip()
     pygame.time.delay(100)
-    character=pygame.image.load(os.path.join('assets',direction+'-round.png'))
-    character_surface=pygame.Surface((137,209))
-    pygame.transform.scale(character,(137,209),character_surface)
+    pygame.Rect((0,0),(137,210))
+    
+    character=pygame.image.load(os.path.join('assets'+os.sep+'images',direction+'-1.png')).convert()
+    character.set_colorkey((34,177,76))
+    character_surface=pygame.Surface((150,150))
     screen.blit(character,location)
     pygame.display.flip()
     pygame.time.delay(100)
-    character=pygame.image.load(os.path.join('assets',direction+'-deflated.png'))
-    character_surface=pygame.Surface((137,203))
-    pygame.transform.scale(character,(137,203),character_surface)
+    
+    character=pygame.image.load(os.path.join('assets'+os.sep+'images',direction+'-2.png')).convert()
+    character.set_colorkey((34,177,76))
+    character_surface=pygame.Surface((150,150))
     screen.blit(character,location)
     pygame.display.flip()
     pygame.time.delay(100)
-    character=pygame.image.load(os.path.join('assets',direction+'-half.png'))
-    character_surface=pygame.Surface((137,192))
-    pygame.transform.scale(character,(137,192),character_surface)
+    
+    character=pygame.image.load(os.path.join('assets'+os.sep+'images',direction+'-3.png')).convert()
+    character.set_colorkey((34,177,76))
+    character_surface=pygame.Surface((150,150))
     screen.blit(character,location)
     pygame.display.flip()
     pygame.time.delay(1000)
-    character=pygame.image.load(os.path.join('assets',direction+'-deflated.png'))
-    character_surface=pygame.Surface((137,203))
-    pygame.transform.scale(character,(137,203),character_surface)
+    
+    character=pygame.image.load(os.path.join('assets'+os.sep+'images',direction+'-2.png')).convert()
+    character.set_colorkey((34,177,76))
+    character_surface=pygame.Surface((150,150))
     screen.blit(character,location)
     pygame.display.flip()
 
@@ -54,16 +59,9 @@ pygame.init()
 done=False
 clock=pygame.time.Clock()
 
-screen=pygame.display.set_mode((500,400))
-screen.fill((255,255,255))
-drawing_surface=pygame.Surface((450,350))
-drawing_surface.fill((245,245,220))
-
-
-#draw_grid() # this is just for test
-
-
-screen.blit(drawing_surface, (50,50))
+screen=pygame.display.set_mode((1080,620))
+drawing_surface=pygame.image.load(os.path.join('assets'+os.sep+'backgrounds','image1.png')).convert()
+screen.blit(drawing_surface, (0,0))
 pygame.display.flip()
 
 bouncing_image(FRONT,screen,(0,0))
@@ -73,7 +71,7 @@ while not done:
         if event.type==pygame.QUIT:
             done=True
     else:
-        bouncing_image(FRONT)
+        bouncing_image(FRONT,screen,(0,0))
 
 
 pygame.quit()
